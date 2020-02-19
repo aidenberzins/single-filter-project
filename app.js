@@ -22,44 +22,77 @@ const videogames = [
     "Switch"
   ]
 ];
-
+let category = "all";
 videogames.forEach(createGameCard);
 
 function createGameCard(game) {
-  let newGame = document.createElement("DIV");
-  let image = document.createElement("IMG");
-  let info = document.createElement("DIV");
-  let title = document.createElement("h3");
-  let cat = document.createElement("span");
+  if (game[2] == category || category == "all") {
+    let newGame = document.createElement("DIV");
+    let image = document.createElement("IMG");
+    let info = document.createElement("DIV");
+    let title = document.createElement("h3");
+    let cat = document.createElement("span");
 
-  newGame.classList.add("card");
-  image.classList.add("card-image");
-  info.classList.add("info");
-  title.classList.add("title");
-  cat.classList.add("category");
+    newGame.classList.add("card");
+    image.classList.add("card-image");
+    info.classList.add("info");
+    title.classList.add("title");
+    cat.classList.add("category");
 
-  image.src = game[0];
-  title.innerHTML = game[1];
-  cat.innerHTML = game[2];
+    image.src = game[0];
+    title.innerHTML = game[1];
+    cat.innerHTML = game[2];
 
-  info.append(title);
-  info.append(cat);
+    info.append(title);
+    info.append(cat);
 
-  newGame.append(image);
-  newGame.append(info);
+    newGame.append(image);
+    newGame.append(info);
 
-  cardStack.append(newGame);
+    cardStack.append(newGame);
+  }
 }
 
 all.addEventListener("click", function() {
+  all.classList.add("active");
+  ps4.classList.remove("active");
+  xbox.classList.remove("active");
+  nintendo.classList.remove("active");
+  cardStack.innerHTML = "";
   console.info("all");
+  category = "all";
+  videogames.forEach(createGameCard);
 });
+
 ps4.addEventListener("click", function() {
+  all.classList.remove("active");
+  ps4.classList.add("active");
+  xbox.classList.remove("active");
+  nintendo.classList.remove("active");
+  cardStack.innerHTML = "";
+  category = "PS4";
+  videogames.forEach(createGameCard);
   console.info("ps4");
 });
+
 xbox.addEventListener("click", function() {
-  console.info("xbox");
+  all.classList.remove("active");
+  ps4.classList.remove("active");
+  xbox.classList.add("active");
+  nintendo.classList.remove("active");
+  cardStack.innerHTML = "";
+  console.info("Xbox");
+  category = "Xbox";
+  videogames.forEach(createGameCard);
 });
+
 nintendo.addEventListener("click", function() {
+  all.classList.remove("active");
+  ps4.classList.remove("active");
+  xbox.classList.remove("active");
+  nintendo.classList.add("active");
+  cardStack.innerHTML = "";
   console.info("nintendo");
+  category = "Switch";
+  videogames.forEach(createGameCard);
 });
