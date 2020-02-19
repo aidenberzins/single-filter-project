@@ -1,5 +1,9 @@
 //  create card with image title and category
 const cardStack = document.querySelector(".card-stack");
+const all = document.querySelector("#all");
+const ps4 = document.querySelector("#ps4");
+const xbox = document.querySelector("#xbox");
+const nintendo = document.querySelector("#switch");
 
 const videogames = [
   [
@@ -46,3 +50,16 @@ function createGameCard(game) {
 
   cardStack.append(newGame);
 }
+
+all.addEventListener("click", function() {
+  console.info("all");
+});
+ps4.addEventListener("click", function() {
+  console.info("ps4");
+});
+xbox.addEventListener("click", function() {
+  console.info("xbox");
+});
+nintendo.addEventListener("click", function() {
+  console.info("nintendo");
+});
